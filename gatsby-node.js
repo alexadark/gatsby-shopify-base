@@ -9,3 +9,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
+const createCollections = require("./utils/createCollections");
+
+exports.createPages = async ({ actions, graphql }) => {
+  await createCollections({ actions, graphql });
+};

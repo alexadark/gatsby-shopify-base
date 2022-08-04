@@ -8,7 +8,7 @@ const Collection = ({ data }) => {
 export default Collection;
 
 export const pageQuery = graphql`
-  query MyQuery($handle: String!, $limit: Int!, $skip: Int) {
+  query ($handle: String!, $limit: Int!, $skip: Int) {
     shopifyCollection(handle: { eq: $handle }) {
       title
       handle

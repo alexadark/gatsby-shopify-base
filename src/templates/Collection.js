@@ -51,7 +51,6 @@ export const pageQuery = graphql`
     shopifyCollection(handle: { eq: $handle }) {
       title
       handle
-      shopifyId
       description
     }
     allShopifyProduct(
@@ -62,6 +61,7 @@ export const pageQuery = graphql`
       nodes {
         title
         handle
+        shopifyId
         media {
           ... on ShopifyMediaImage {
             id
@@ -69,8 +69,6 @@ export const pageQuery = graphql`
               gatsbyImageData
               altText
             }
-            shopifyId
-            status
           }
         }
         priceRangeV2 {
@@ -83,9 +81,6 @@ export const pageQuery = graphql`
             currencyCode
           }
         }
-        tags
-        totalInventory
-        productType
       }
     }
   }

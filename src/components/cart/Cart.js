@@ -23,18 +23,25 @@ export const Cart = () => {
           <FaShoppingCart />
         </Dialog.Trigger>
         <Dialog.Overlay forceMount asChild>
-          <motion.div  className="absolute inset-0 z-50 h-screen bg-black bg-opacity-80" />
-
-
-          <Dialog.Overlay>
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-50 h-screen bg-black bg-opacity-80"
+              />
+            )}
+          </AnimatePresence>
+        </Dialog.Overlay>
         <Dialog.Content forceMount asChild>
           <AnimatePresence>
             {open && (
               <motion.div
-                className="bg-slate-400 text-black  w-[400px] absolute top-0 right-0 shadow-xl z-50"
-                initial={{ x: "100%", height: "3000px" }}
-                animate={{ x: 0, height: "10000px" }}
-                exit={{ x: "100%", height: "3000px" }}
+                className="bg-white p-10 text-black  w-[400px] absolute top-0 right-0 shadow-xl z-50"
+                initial={{ x: "100%", height: "100vh" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
                 transition={{ duration: 0.8 }}
                 style={{ height: "100%" }}
               >

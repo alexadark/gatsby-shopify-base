@@ -43,7 +43,6 @@ export const Cart = () => {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ duration: 0.8 }}
-                style={{ height: "100%" }}
               >
                 <Dialog.Title>Cart</Dialog.Title>
                 <Dialog.Description>Cart content</Dialog.Description>

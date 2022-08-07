@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
+import { Cart } from "~/components/cart";
 
 export const Header = () => {
   const data = useStaticQuery(graphql`
@@ -16,11 +17,11 @@ export const Header = () => {
     (item) => item.handle !== "frontpage"
   );
   return (
-    <header className="bg-black text-white py-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="py-4 text-white bg-black">
+      <div className="container flex items-center justify-between mx-auto">
         <h1>Gatsby - Shopify</h1>
         <nav>
-          <ul className="flex justify-between items-center space-x-2">
+          <ul className="flex items-center justify-between space-x-2">
             <li>
               <a href="">Home</a>
             </li>
@@ -36,6 +37,7 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
+        <Cart />
       </div>
     </header>
   );

@@ -5,14 +5,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
 export const Cart = () => {
-  const {
-    checkout,
-    checkCoupon,
-    removeFromCart,
-    removeCoupon,
-    toggleCartOpen,
-    isCartOpen,
-  } = useContext(StoreContext);
+  const { checkout, checkCoupon, removeFromCart, removeCoupon } =
+    useContext(StoreContext);
 
   const [coupon, setCoupon] = useState("");
   const [open, setOpen] = useState(false);

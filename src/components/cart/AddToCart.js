@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { StoreContext } from "~/context/StoreContext";
 
-export const AddToCart = ({ variantId }) => {
+export const AddToCart = ({ variantId, ...props }) => {
   const { addToCart } = useContext(StoreContext);
-  return <button onClick={() => addToCart(variantId)}>Add To Cart</button>;
+  return (
+    <button onClick={() => addToCart(variantId)} {...props}>
+      Add To Cart
+    </button>
+  );
 };

@@ -7,8 +7,6 @@ const client = Client.buildClient({
 });
 
 const defaultValues = {
-  isCartOpen: false,
-  toggleCartOpen: () => {},
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -22,8 +20,6 @@ const defaultValues = {
 export const StoreContext = createContext(defaultValues);
 
 export const StoreProvider = ({ children }) => {
-  const [isCartOpen, setCartOpen] = useState(false);
-  const toggleCartOpen = () => setCartOpen(!isCartOpen);
   const [checkout, setCheckout] = useState(defaultValues.checkout);
   const [isLoading, setLoading] = useState(false);
 
@@ -120,8 +116,6 @@ export const StoreProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         checkout,
-        toggleCartOpen,
-        isCartOpen,
         checkCoupon,
         removeCoupon,
         isLoading,

@@ -32,17 +32,31 @@ export const Cart = () => {
           <AnimatePresence>
             {open && (
               <motion.div
-                className="bg-white p-10 text-black  w-[400px] absolute top-0 right-0 shadow-xl z-50"
+                className="bg-white p-10 text-black w-full  sm:w-[450px] md:w-1/2 absolute top-0 right-0 shadow-xl z-50  overflow-y-scroll"
                 initial={{ x: "100%", height: "100vh" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ duration: 0.8 }}
               >
-                <Dialog.Title>Cart</Dialog.Title>
-                <Dialog.Description>Cart content</Dialog.Description>
                 <Dialog.Close asChild>
-                  <CloseIcon />
+                  <CloseIcon className="absolute cursor-pointer right-5 top-5" />
                 </Dialog.Close>
+                <div>
+                  {checkout.lineItems.map((item) => {
+                    return (
+                      <div key={item.id} className="flex justify-between">
+                        <div className="flex flex-col">
+                          <div className="font-bold">{item.title}</div>
+                          <div className="text-sm">{item.variant.title}</div>
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="font-bold">{item.quantity}</div>
+                          <div className="text-sm">{item.variant.price}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

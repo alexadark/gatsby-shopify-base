@@ -2,11 +2,12 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "~/components/Layout";
 import { Image } from "~/components/ui-components/Image";
-import { AddToCart } from "~/components/Cart";
+import { ButtonAddToCart } from "~/components/Cart";
 
 const ProductPage = ({ data }) => {
   const { title, shopifyId, description, media, variants } =
     data.shopifyProduct;
+
   return (
     <Layout>
       <div className="container items-center gap-10 mx-auto product md:flex">
@@ -21,7 +22,10 @@ const ProductPage = ({ data }) => {
           </div>
           <div className="product__description">{description}</div>
           <div className="mt-5 buttons">
-            <AddToCart variantId={variants[0].shopifyId} className="btn" />
+            <ButtonAddToCart
+              variantId={variants[0].shopifyId}
+              className="btn"
+            />
           </div>
         </div>
       </div>

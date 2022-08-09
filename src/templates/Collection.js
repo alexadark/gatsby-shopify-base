@@ -2,6 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { Layout } from "~/components/Layout";
 import { Image } from "~/components/ui-components";
+import { ButtonAddToCart } from "~/components/Cart";
 
 const Collection = ({ data }) => {
   const { shopifyCollection } = data;
@@ -17,7 +18,7 @@ const Collection = ({ data }) => {
 
         <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
           {products.map((product) => {
-            const { title, priceRangeV2, media, handle } = product;
+            const { title, priceRangeV2, media, handle, variants } = product;
             const currency = priceRangeV2.minVariantPrice.currencyCode;
             const price =
               priceRangeV2.minVariantPrice.amount ===
@@ -25,8 +26,8 @@ const Collection = ({ data }) => {
                 ? `${priceRangeV2.minVariantPrice.amount} ${currency}`
                 : `from ${priceRangeV2.minVariantPrice.amount}  ${currency}`;
             return (
-              <Link to={`/${handle}`} key={handle}>
-                <div className="border product-card">
+              <div className="border product-card">
+                <Link to={`/${handle}`} key={handle}>
                   <div className="product-card__image">
                     <Image img={media[0].image} />
                   </div>
@@ -34,8 +35,14 @@ const Collection = ({ data }) => {
                     <h3 className="font-bold">{title}</h3>
                     <div className="lowercase product-card__price">{price}</div>
                   </div>
+                </Link>
+                <div className="flex justify-center mb-5">
+                  <ButtonAddToCart
+                    variantId={variants[0].shopifyId}
+                    className="btn"
+                  />
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -80,6 +87,9 @@ export const pageQuery = graphql`
             amount
             currencyCode
           }
+        }
+        variants {
+          shopifyId
         }
       }
     }

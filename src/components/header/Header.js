@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { Cart } from "~/components/cart";
+import { StoreContext } from "~/context/StoreContext";
 
 export const Header = () => {
+  const { checkout } = useContext(StoreContext);
+
   const data = useStaticQuery(graphql`
     query {
       allShopifyCollection {

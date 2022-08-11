@@ -26,7 +26,7 @@ const Collection = ({ data }) => {
                 ? `${priceRangeV2.minVariantPrice.amount} ${currency}`
                 : `from ${priceRangeV2.minVariantPrice.amount}  ${currency}`;
             return (
-              <div className="border product-card">
+              <div className="border product-card" key={product.handle}>
                 <Link to={`/${handle}`} key={handle}>
                   <div className="product-card__image">
                     <Image img={media[0].image} />

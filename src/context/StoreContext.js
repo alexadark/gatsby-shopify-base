@@ -37,17 +37,25 @@ export const StoreProvider = ({ children }) => {
 
   const initializeCheckout = async () => {
     try {
+      //we check if a checkout id exists in local storage
       const currentCheckoutId = isBrowser
         ? localStorage.getItem("checkout_id")
         : null;
 
       let newCheckout = null;
+      //if a checkout di exists in ls we fetch the cehckout from shopify
       if (currentCheckoutId) {
         newCheckout = await client.checkout.fetch(currentCheckoutId);
         if (newCheckout.completedAt) {
           newCheckout = await getNewId();
         }
+        //if it doesn't exist we create a new checkout in shopify an add it to local storage
+      } else {
+        newCheckout = await client.checkout.create();
+        isBrowser && localStorage.setItem("checkout_id", newCheckout.id);
       }
+      //set checkout to state
+      setCheckout(newCheckout);
     } catch (error) {
       console.error(error);
     }

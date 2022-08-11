@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { Layout } from "~/components/Layout";
 import { Image } from "~/components/ui-components";
-import { ButtonAddToCart } from "~/components/Cart";
+import { ButtonAddToCart } from "~/components/shoppingCart";
 
 const Collection = ({ data }) => {
   const { shopifyCollection } = data;

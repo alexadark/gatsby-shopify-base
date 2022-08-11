@@ -71,6 +71,7 @@ export const StoreProvider = ({ children }) => {
         checkout.id,
         lineItems
       );
+      console.log(newCheckout);
       setLoading(false);
       setCheckout(newCheckout);
     } catch (error) {

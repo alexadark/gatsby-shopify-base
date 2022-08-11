@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import { Cart } from "~/components/cart";
+import { Cart } from "~/components/shoppingCart";
 import { StoreContext } from "~/context/StoreContext";
 
 export const Header = () => {

@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
+import { CartItem } from "./CartItem";
 export const Cart = () => {
   const { checkout, checkCoupon, removeFromCart, removeCoupon } =
     useContext(StoreContext);
@@ -43,16 +44,11 @@ export const Cart = () => {
               <div>
                 {checkout.lineItems.map((item) => {
                   return (
-                    <div key={item.id} className="flex justify-between">
-                      <div className="flex flex-col">
-                        <div className="font-bold">{item.title}</div>
-                        <div className="text-sm">{item.variant.title}</div>
-                      </div>
-                      <div className="flex flex-col">
-                        <div className="font-bold">{item.quantity}</div>
-                        <div className="text-sm">{item.variant.price}</div>
-                      </div>
-                    </div>
+                    <CartItem
+                      key={item.id}
+                      item={item}
+                      className="py-5 border-b"
+                    />
                   );
                 })}
               </div>

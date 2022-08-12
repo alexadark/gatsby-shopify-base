@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { Layout } from "~/components/Layout";
 import { Image } from "~/components/ui-components/Image";
 import { ButtonAddToCart, QuantityControls } from "~/components/shoppingCart";
 
 const ProductPage = ({ data }) => {
-  const { title, shopifyId, description, media, variants } =
-    data.shopifyProduct;
+  const { title, description, media, variants } = data.shopifyProduct;
   const [quantity, setQuantity] = useState(1);
 
   return (

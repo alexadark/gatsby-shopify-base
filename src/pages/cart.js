@@ -7,6 +7,7 @@ const CartPage = () => {
     useContext(StoreContext);
 
   const [coupon, setCoupon] = useState("");
+  const [quantity, setQuantity] = useState(1);
   return (
     <Layout>
       <div className="container mx-auto my-10">
@@ -18,6 +19,24 @@ const CartPage = () => {
                 <div className="flex items-center gap-5">
                   <div className="w-[150px]">
                     <img src={item.variant.image.src} alt="" />
+                  </div>
+                  <div className="mt-5 qty">
+                    <div className="mb-3 qty__label">Quantity</div>
+                    <div className="inline-flex gap-5 px-4 py-2 border qty__control ">
+                      <button
+                        className="qty__control-btn"
+                        onClick={() => setQuantity(quantity - 1)}
+                      >
+                        -
+                      </button>
+                      <div className="qty__control-value">{quantity}</div>
+                      <button
+                        className="qty__control-btn"
+                        onClick={() => setQuantity(quantity + 1)}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
                   <div className="">
                     <div className="font-bold">{item.title}</div>

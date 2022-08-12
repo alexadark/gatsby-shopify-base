@@ -6,6 +6,9 @@ import { FaShoppingCart as CartIcon } from "react-icons/fa";
 
 export const Header = () => {
   const { checkout } = useContext(StoreContext);
+  const qty = checkout.lineItems.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
 
   const data = useStaticQuery(graphql`
     query {
@@ -43,6 +46,7 @@ export const Header = () => {
         </nav>
         {/* <Cart /> */}
         <Link to="/cart">
+          <div className="text-white">{qty}</div>
           <CartIcon />
         </Link>
       </div>

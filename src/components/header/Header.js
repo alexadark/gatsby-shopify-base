@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { Cart } from "~/components/shoppingCart";
 import { StoreContext } from "~/context/StoreContext";
+import { FaShoppingCart as CartIcon } from "react-icons/fa";
 
 export const Header = () => {
   const { checkout } = useContext(StoreContext);
@@ -40,7 +41,10 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
-        <Cart />
+        {/* <Cart /> */}
+        <Link to="/cart">
+          <CartIcon />
+        </Link>
       </div>
     </header>
   );

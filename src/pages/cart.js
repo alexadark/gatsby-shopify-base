@@ -14,16 +14,21 @@ const CartPage = () => {
         <div>
           {checkout.lineItems.map((item) => {
             return (
-              <div key={item.id} className="flex justify-between py-5">
-                <div className="flex flex-col">
-                  <div className="font-bold">{item.title}</div>
-                  <div className="text-sm">{item.variant.title}</div>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="cursor-pointer hover:text-red-400"
-                  >
-                    Delete
-                  </button>
+              <div key={item.id} className="flex justify-between py-5 border-b">
+                <div className="flex items-center gap-5">
+                  <div className="w-[150px]">
+                    <img src={item.variant.image.src} alt="" />
+                  </div>
+                  <div className="">
+                    <div className="font-bold">{item.title}</div>
+                    <div className="text-sm">{item.variant.title}</div>
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="cursor-pointer btn "
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <div className="font-bold">{item.quantity}</div>
@@ -35,7 +40,7 @@ const CartPage = () => {
         </div>
         <div>
           {checkout.discountApplications?.length > 0 ? (
-            <div>
+            <div className="mt-10">
               <p>
                 {checkout.discountApplications[0].code}-
                 {checkout.discountApplications[0].value.percentage}%

@@ -65,7 +65,7 @@ export const StoreProvider = ({ children }) => {
     initializeCheckout();
   }, []);
 
-  const addToCart = async (variantId, quantity) => {
+  const addToCart = async (variantId, quantity = 1) => {
     try {
       setLoading(true);
       const lineItems = [

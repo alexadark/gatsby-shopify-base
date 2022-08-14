@@ -14,14 +14,14 @@ const ProductPage = ({ data }) => {
   }, {});
 
   const [selectedOptions, setSelectedOptions] = useState(optionsObject);
-  console.log(selectedOptions);
 
-  const variantTitles = variants[0].title.split("/ ");
-  console.log(variantTitles);
+  const variantTitles = variants[0].title.split("/").map((item) => item.trim());
+
   const optionsValues = Object.values(selectedOptions);
-  const variant = variants.filter((variant) =>
-    variant.title.split("/").every((item) => optionsValues.includes(item))
-  );
+  const variant = variants.find((variant) => {
+    const arrayFromTitle = variant.title.split("/").map((item) => item.trim());
+    return arrayFromTitle.every((item) => optionsValues.includes(item));
+  });
   console.log("variant", variant, variants, optionsValues);
 
   return (

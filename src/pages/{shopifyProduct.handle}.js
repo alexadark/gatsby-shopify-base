@@ -16,6 +16,14 @@ const ProductPage = ({ data }) => {
   const [selectedOptions, setSelectedOptions] = useState(optionsObject);
   console.log(selectedOptions);
 
+  const variantTitles = variants[0].title.split("/ ");
+  console.log(variantTitles);
+  const optionsValues = Object.values(selectedOptions);
+  const variant = variants.filter((variant) =>
+    variant.title.split("/").every((item) => optionsValues.includes(item))
+  );
+  console.log("variant", variant, variants, optionsValues);
+
   return (
     <Layout>
       <div className="container items-center gap-10 mx-auto my-10 product md:flex">

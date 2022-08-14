@@ -4,12 +4,10 @@ import { FaShoppingCart } from "react-icons/fa";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
-import { CartItem } from "./CartItem";
+import { CartItem, Coupons } from "~/components/shoppingCart";
 export const Cart = () => {
-  const { checkout, checkCoupon, removeFromCart, removeCoupon } =
-    useContext(StoreContext);
+  const { checkout } = useContext(StoreContext);
 
-  const [coupon, setCoupon] = useState("");
   const [open, setOpen] = useState(false);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -42,15 +40,18 @@ export const Cart = () => {
                 <CloseIcon className="absolute cursor-pointer right-5 top-5" />
               </Dialog.Close>
               <div>
-                {checkout.lineItems.map((item) => {
-                  return (
-                    <CartItem
-                      key={item.id}
-                      item={item}
-                      className="py-5 border-b"
-                    />
-                  );
-                })}
+                <h1>Cart</h1>
+                <div>
+                  {checkout.lineItems.map((item) => {
+                    return <CartItem key={item.id} item={item} />;
+                  })}
+                </div>
+                <div>
+                  <Coupons className="my-10" />
+                  <a href={checkout.webUrl} target="_blank" className="btn">
+                    {checkout.totalPriceV2?.amount}$ Checkout
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}

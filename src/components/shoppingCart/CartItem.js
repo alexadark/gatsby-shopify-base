@@ -16,7 +16,7 @@ export const CartItem = ({ item }) => {
           <div className="font-bold">{item.title}</div>
           <div className="text-sm">{item.variant.title}</div>
           <QuantityControls
-            item={item``}
+            item={item}
             quantity={quantity}
             setQuantity={setQuantity}
             isInCart

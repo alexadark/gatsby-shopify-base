@@ -10,7 +10,7 @@ const ProductPage = ({ data }) => {
 
   return (
     <Layout>
-      <div className="container items-center gap-10 mx-auto product md:flex">
+      <div className="container items-center gap-10 mx-auto my-10 product md:flex">
         <div className="flex-1 product__image">
           {" "}
           <Image img={media[0].image} />{" "}

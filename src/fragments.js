@@ -22,17 +22,18 @@ export const fragments = graphql`
     }
     variants {
       availableForSale
-      compareAtPrice
       price
       shopifyId
       displayName
+      image {
+        altText
+        gatsbyImageData
+      }
       selectedOptions {
         name
         value
       }
       title
-      taxable
-      taxCode
       media {
         ... on ShopifyMediaImage {
           id

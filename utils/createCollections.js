@@ -27,7 +27,7 @@ module.exports = async ({ actions, graphql }) => {
           pathPrefix: `/collections/${collection.handle}`,
           component: template,
           items: collection.products,
-          itemsPerPage: 12,
+          itemsPerPage: 50,
           context: {
             handle: collection.handle,
           },

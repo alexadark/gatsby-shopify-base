@@ -69,6 +69,7 @@ export const pageQuery = graphql`
         title
         handle
         shopifyId
+        id
         media {
           ... on ShopifyMediaImage {
             id
@@ -90,6 +91,7 @@ export const pageQuery = graphql`
         }
         variants {
           shopifyId
+          id
         }
       }
     }

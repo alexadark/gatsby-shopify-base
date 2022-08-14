@@ -6,6 +6,14 @@ export const fragments = graphql`
     hasOnlyDefaultVariant
     hasOutOfStockVariants
     id
+    priceRangeV2 {
+      maxVariantPrice {
+        amount
+      }
+      minVariantPrice {
+        amount
+      }
+    }
     options {
       name
       position

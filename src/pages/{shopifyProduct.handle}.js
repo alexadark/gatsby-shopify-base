@@ -18,7 +18,7 @@ const ProductPage = ({ data }) => {
         <div className="flex-1 product__info">
           <h1 className="mb-2 font-bold">{title}</h1>
           <div className="mb-2 font-bold product__price">
-            {variants[0].price}$
+            {variants[0].price}eur
           </div>
           <div className="product__description">{description}</div>
           <QuantityControls quantity={quantity} setQuantity={setQuantity} />

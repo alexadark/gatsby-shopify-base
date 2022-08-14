@@ -18,13 +18,19 @@ const Collection = ({ data }) => {
 
         <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
           {products.map((product) => {
-            const { title, priceRangeV2, media, handle, variants } = product;
-            const currency = priceRangeV2.minVariantPrice.currencyCode;
+            const {
+              title,
+              priceRangeV2: {
+                maxVariantPrice: { amount: maxPrice },
+                minVariantPrice: { amount: minPrice, currencyCode: currency },
+              },
+              media,
+              handle,
+              variants,
+            } = product;
+
             const price =
-              priceRangeV2.minVariantPrice.amount ===
-              priceRangeV2.maxVariantPrice.amount
-                ? `${priceRangeV2.minVariantPrice.amount} ${currency}`
-                : `from ${priceRangeV2.minVariantPrice.amount}  ${currency}`;
+              maxPrice === minPrice ? `${minPrice}` : `from ${minPrice}`;
             return (
               <div className="border product-card" key={product.handle}>
                 <Link to={`/${handle}`} key={handle}>
@@ -33,7 +39,10 @@ const Collection = ({ data }) => {
                   </div>
                   <div className="p-4 text-center lowercase product-card__info ">
                     <h3 className="font-bold">{title}</h3>
-                    <div className="lowercase product-card__price">{price}</div>
+                    <div className="lowercase product-card__price">
+                      {price}
+                      {currency}
+                    </div>
                   </div>
                 </Link>
                 <div className="flex justify-center mb-5">
